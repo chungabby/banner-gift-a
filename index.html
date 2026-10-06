@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>It's Saturday — 圖文 Banner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <!-- 英文字體：Adobe Fonts「collier」（全部英文自動套用） -->
+  <link rel="stylesheet" href="https://use.typekit.net/ezg8jxr.css">
+  <style>
+    :root {
+      /* ══════════ 顏色設定（各自獨立，改這裡就好） ══════════ */
+      --bg: #887f6b;              /* 背景 */
+      --title-color: #fff3e6;     /* 大標題 */
+      --eyebrow-color: #ffffff;   /* 小標 */
+      --subtitle-color: #ffffff;  /* 副標 */
+      --desc-color: #ffffff;      /* 說明文字 */
+      --btn-text: #ffffff;        /* 按鈕文字 */
+      --btn-line: #ffffff;        /* 按鈕框線 */
+      --btn-hover-bg: #ffffff;    /* 按鈕滑過：底色 */
+      --btn-hover-text: #887f6b;  /* 按鈕滑過：文字 */
+      --img-placeholder: #8c7053; /* 圖片載入前的佔位色 */
+
+      /* ══════════ 字型設定 ══════════ */
+      --font: "collier", 'Noto Sans TC', sans-serif;   /* 全部文字：英文 collier、中文思源黑體 */
+      --btn-font: "collier", 'Noto Sans TC', sans-serif;  /* 按鈕：英文 collier、中文思源黑體 */
+      --title-size: clamp(30px, 8vw, 44px); /* 手機版標題大小 */
+      --title-weight: 300;    /* 標題粗細：200 極細、300 細 */
+      --title-lh: 1.4;        /* 標題行高 */
+      --title-ls: 0.08em;     /* 標題字距 */
+
+      /* ══════════ 版面設定 ══════════ */
+      --max: 1100px;          /* 平板版內容最大寬度 */
+      --img-max: 420px;       /* 平板版小圖最大寬度 */
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      background: var(--bg);
+      overflow-x: hidden;
+      font-family: var(--font);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .banner {
+      background: var(--bg);
+    }
+
+    /* 左側大圖：手機與平板隱藏 */
+    .hero {
+      display: none;
+    }
+
+    .panel {
+      padding: 40px 24px 56px;
+    }
+
+    .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 大標題 */
+    .title {
+      position: relative;
+      z-index: 2;
+      color: var(--title-color);
+      font-weight: var(--title-weight);
+      font-size: var(--title-size);
+      line-height: var(--title-lh);
+      letter-spacing: var(--title-ls);
+    }
+
+    /* 小圖（與標題第二行重疊） */
+    .media {
+      position: relative;
+      z-index: 1;
+      width: 46%;
+      margin: calc(var(--title-size) * var(--title-lh) * -0.45) 0 0 auto;
+    }
+    .media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      color: transparent;
+      background: var(--img-placeholder);
+    }
+
+    /* 內文區 */
+    .body {
+      margin-top: 40px;
+      text-align: center;
+    }
+    /* ── 以下字級對應 BVShop 網站設定（p / h3） ── */
+    .eyebrow {               /* 同網站 p */
+      margin-bottom: 4px;
+      color: var(--eyebrow-color);
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 2.2;
+      letter-spacing: 0.06em;
+    }
+    .subtitle {              /* 同網站 h3 */
+      margin-bottom: 8px;
+      color: var(--subtitle-color);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+    }
+    .desc {                  /* 同網站 p */
+      margin: 0 auto 28px;
+      max-width: 30em;
+      color: var(--desc-color);
+      font-size: 13.5px;
+      font-weight: 400;
+      line-height: 2.2;
+      letter-spacing: 0.06em;
+    }
+
+    /* 按鈕：與 Banner B（圖＋按鈕）完全相同 */
+    .btn {
+      display: inline-block;
+      min-width: 220px;
+      padding: 16px 32px;
+      border: 1px solid var(--btn-line);
+      background: transparent;
+      color: var(--btn-text);
+      font-family: var(--btn-font);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      text-indent: 0.2em;
+      text-align: center;
+      transition: background-color .25s ease, color .25s ease;
+    }
+    .btn:hover,
+    .btn:focus {
+      background: var(--btn-hover-bg);
+      color: var(--btn-hover-text);
+    }
+
+    /* ===== 平板（768px 以上）：單欄，小圖在右 ===== */
+    @media (min-width: 768px) {
+      :root {
+        --title-size: clamp(45px, 5vw, 60px);  /* 平板版標題大小 */
+      }
+      .panel {
+        padding: 64px 48px 72px;
+      }
+      .inner {
+        display: grid;
+        grid-template-columns: 1fr minmax(0, var(--img-max));
+        column-gap: 48px;
+      }
+      .title {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        align-self: start;
+      }
+      .media {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        width: 100%;
+        margin: 0;
+        padding-top: calc(var(--title-size) * var(--title-lh));
+      }
+      .body {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: end;
+        margin-top: 48px;
+        text-align: left;
+      }
+      .desc {
+        margin-left: 0;
+        max-width: 26em;
+      }
+    }
+
+    /* ===== 電腦（1024px 以上）：左大圖＋右文字區 ===== */
+    @media (min-width: 1024px) {
+      :root {
+        --title-size: clamp(36px, 3.4vw, 60px);  /* 電腦版標題大小 */
+        --img-max: 260px;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+      }
+      .hero {
+        display: block;
+        position: relative;
+      }
+      .hero img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        color: transparent;
+        background: var(--img-placeholder);
+      }
+      .panel {
+        display: flex;
+        align-items: center;
+        padding: 72px clamp(40px, 4vw, 72px);
+      }
+      .inner {
+        width: 100%;
+        max-width: 640px;
+        margin: 0;
+        column-gap: 40px;
+      }
+      .desc {
+        max-width: 22em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <div class="split">
+
+      <!-- 電腦版左側大圖（手機自動隱藏）→ 換成你的大圖網址 -->
+      <div class="hero">
+        <img src="https://ik.imagekit.io/itssaturday/banner/20261006-banner-gift.jpg" alt="香氛送禮套組">
+      </div>
+
+      <div class="panel">
+        <div class="inner">
+          <h2 class="title">Gift for U and me<br>It's Saturday! Bundles</h2>
+
+          <!-- 標題旁的小圖 → 換成你的小圖網址 -->
+          <div class="media">
+            <img src="https://ik.imagekit.io/itssaturday/banner/20261006-banner-gift-m.jpg" alt="香氛送禮套組">
+          </div>
+
+          <div class="body">
+            <p class="eyebrow">由團隊搭配不同的香氛組合
+          </br>附有基本包裝</br>送禮的理想選擇！</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* 把內容的實際高度回報給 BVShop 頁面，讓框框高度自動剛好 */
+    (function () {
+      var last = 0;
+      function report() {
+        var h = document.querySelector(".banner").offsetHeight;
+        if (h && h !== last) {
+          last = h;
+          window.parent.postMessage({ ispBannerHeight: h, ispBannerId: "isp-text-banner" }, "*");
+        }
+      }
+      window.addEventListener("load", report);
+      window.addEventListener("resize", report);
+      Array.prototype.forEach.call(document.images, function (img) {
+        img.addEventListener("load", report);
+      });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(report);
+      report();
+      setTimeout(report, 500);
+      setTimeout(report, 1500);
+    })();
+  </script>
+</body>
+</html>
