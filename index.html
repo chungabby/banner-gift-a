@@ -12,7 +12,7 @@
   <style>
     :root {
       /* ══════════ 顏色設定（各自獨立，改這裡就好） ══════════ */
-      --bg: #887f6b;              /* 背景 */
+      --bg: #a48767;              /* 背景 */
       --title-color: #fff3e6;     /* 大標題 */
       --eyebrow-color: #ffffff;   /* 小標 */
       --subtitle-color: #ffffff;  /* 副標 */
@@ -20,7 +20,7 @@
       --btn-text: #ffffff;        /* 按鈕文字 */
       --btn-line: #ffffff;        /* 按鈕框線 */
       --btn-hover-bg: #ffffff;    /* 按鈕滑過：底色 */
-      --btn-hover-text: #887f6b;  /* 按鈕滑過：文字 */
+      --btn-hover-text: #a48767;  /* 按鈕滑過：文字 */
       --img-placeholder: #8c7053; /* 圖片載入前的佔位色 */
 
       /* ══════════ 字型設定 ══════════ */
@@ -235,6 +235,21 @@
         max-width: 22em;
       }
     }
+
+    /* ══════════ 統一尺寸（三個 banner 共用，請勿更改） ══════════
+       手機 800×1250 比例｜平板 740px｜電腦 600px，內容垂直置中 */
+    .banner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(100vw * 1250 / 800);
+    }
+    @media (min-width: 768px) {
+      .banner { min-height: 740px; }
+    }
+    @media (min-width: 1024px) {
+      .banner { min-height: 600px; }
+    }
   </style>
 </head>
 <body>
@@ -243,7 +258,7 @@
 
       <!-- 電腦版左側大圖（手機自動隱藏）→ 換成你的大圖網址 -->
       <div class="hero">
-        <img src="https://ik.imagekit.io/itssaturday/banner/20261006-banner-gift.jpg" alt="香氛送禮套組">
+        <img src="https://ik.imagekit.io/itssaturday/banner/20261002-flower.jpg" alt="香氛送禮套組">
       </div>
 
       <div class="panel">
@@ -252,7 +267,7 @@
 
           <!-- 標題旁的小圖 → 換成你的小圖網址 -->
           <div class="media">
-            <img src="https://ik.imagekit.io/itssaturday/banner/20261006-banner-gift-m.jpg" alt="香氛送禮套組">
+            <img src="https://ik.imagekit.io/itssaturday/banner/20261002-flower-m.jpg" alt="香氛送禮套組">
           </div>
 
           <div class="body">
